@@ -3,15 +3,23 @@ import React, { useEffect, useState } from "react";
 const MyComponent = () => {
   const [count, setCount] = useState(0);
   const [date, setDate] = useState(new Date());
-  document.title = `Clicked ${count} times`;
 
   const tick = () => {
-    console.log(`clock ticking!`);
+    setDate(new Date());
   };
   useEffect(() => {
-    setInterval(setDate(new Date()), 1000);
+    document.title = `Clicked ${count} times`;
   }, [count]);
 
+  useEffect(() => {
+    console.log("starting timer");
+    const interval = setInterval(tick, 1000);
+    // do the cleanup - stop the timer
+    return () => {
+      console.log("component unmounted");
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <div style={{ margin: "50px" }}>
       <p>Time: {date.toLocaleTimeString()}</p>
