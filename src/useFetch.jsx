@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useFetch(options) {
   const [data, setData] = useState(null);
-  return {data};
+  useEffect(() => {
+    fetch(options.url)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+  return { data };
 }

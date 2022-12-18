@@ -5,6 +5,7 @@ function App() {
   const { data } = useFetch({
     url: "/src/data.json",
   });
+  console.log("app rendering");
 
   return (
     <div className="main">
