@@ -1,4 +1,6 @@
+import { useState } from "react";
 
 export default function useFetch(options) {
-  return {}
+  const [data, setData] = useState(null);
+  return {data};
 }
