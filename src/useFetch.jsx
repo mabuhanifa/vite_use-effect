@@ -15,7 +15,8 @@ export default function useFetch(options) {
 
   const [data, setData] = useState(null);
 
-  const savedOnSuccess = useRef(onSuccess);
+  const savedOnSuccess = useCallbackRef(onSuccess);
+
   useEffect(() => {
     if (url) {
       fetch(url)
@@ -26,7 +27,7 @@ export default function useFetch(options) {
         });
     }
     console.log("useEffect rendering the app");
-  }, [url, onSuccess]);
+  }, [url]);
 
   return { data };
 }
