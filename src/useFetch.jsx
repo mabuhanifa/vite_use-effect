@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 export default function useFetch(options) {
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch(options.url)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, [options.url]);
+    if (options.url) {
+      fetch(options.url)
+        .then((res) => res.json())
+        .then((data) => setData(data));
+    }
+  }, [options]);
+
   return { data };
 }
