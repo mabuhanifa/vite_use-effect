@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 
 export default function useFetch(options) {
+  const { url } = options;
+
   const [data, setData] = useState(null);
+
   useEffect(() => {
-    if (options.url) {
-      fetch(options.url)
+    if (url) {
+      fetch(url)
         .then((res) => res.json())
         .then((data) => setData(data));
     }
-  }, [options]);
+    console.log("useEffect rendering the app");
+  }, [url]);
 
   return { data };
 }
