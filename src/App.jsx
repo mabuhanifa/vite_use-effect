@@ -3,9 +3,8 @@ import useFetch from "./useFetch";
 
 function App() {
   const { data } = useFetch({
-    url: "/src/data.json",
+    url: "/src/data/data.json",
   });
-  console.log("app rendering");
 
   return (
     <div className="main">

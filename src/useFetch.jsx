@@ -6,6 +6,6 @@ export default function useFetch(options) {
     fetch(options.url)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, []);
+  }, [options.url]);
   return { data };
 }
