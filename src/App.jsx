@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 import useFetch from "./useFetch";
 
 function App() {
   const [url, setUrl] = useState(null);
-  const { data } = useFetch({
-    url: url,
-  });
 
-  // "/src/data/data.json"
+  const myOption = useMemo(() => ({ url }), [url]);
+
+  const { data } = useFetch(myOption);
+  // myOption is a object with url property
   return (
     <div className="main">
       {/* <MyComponent /> */}
