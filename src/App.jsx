@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import useFetch from "./useFetch";
+import useFetch from "./hooks/useFetch";
+import useStopwatch from "./hooks/useStopwatch";
 
 function App() {
   const [url, setUrl] = useState(null);
@@ -9,10 +10,12 @@ function App() {
   // const { data } = useFetch(myOption);
 
   const { data } = useFetch({ url, onSuccess: () => console.log("success") });
+  const count = useStopwatch()
   return (
     <div className="main">
       {/* <MyComponent /> */}
       {/* <MyComponentClass /> */}
+      {count}
       <div>
         {JSON.stringify(data)}
 
