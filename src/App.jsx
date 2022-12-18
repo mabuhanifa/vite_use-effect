@@ -1,14 +1,14 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import useFetch from "./useFetch";
 
 function App() {
   const [url, setUrl] = useState(null);
-
-  const myOption = useMemo(() => ({ url }), [url]);
-
-  const { data } = useFetch(myOption);
+  // const myOption = useMemo(() => ({ url }), [url]);
   // myOption is a object with url property
+  // const { data } = useFetch(myOption);
+
+  const { data } = useFetch({ url, onSuccess: () => console.log("success") });
   return (
     <div className="main">
       {/* <MyComponent /> */}
